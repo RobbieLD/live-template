@@ -22,15 +22,15 @@
         <div class="sub-header">
             <div class="sub-header-col">
                 <div class="bold caps">Invoice No.</div>
-                <input type="text" value="1" class="right">
+                <input type="text" class="right">
             </div>
             <div class="sub-header-col">
                 <div class="bold caps">Issue Date</div>
-                <input type="date" value="01/01/2000">
+                <input type="date" class="issuedate" value="01/01/2000">
             </div>
             <div class="sub-header-col">
                 <div class="bold caps">Due Date</div>
-                <input type="date" value="01/01/2000">
+                <input type="date" class="duedate" value="01/01/2000">
             </div>
         </div>
         <div class="to-from">
@@ -51,8 +51,8 @@
                 <div class="small tocountry"></div>
             </div>
             <div>
-                <div class="bold caps">To</div>
-                <div class="pay-total">$30.00</div>
+                <div class="bold caps">Amount</div>
+                <div class="pay-total final-total"></div>
             </div>
         </div>
         <table class="items">
@@ -73,18 +73,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="data-row">
                     <td>
                         <input type="text" class="left">
                     </td>
                     <td>
-                        <input type="text" class="right">
+                        <input type="text" class="right item-number">
                     </td>
                     <td>
-                        <input type="text" class="right">
+                        <input type="text" class="right item-price">
                     </td>
                     <td>
-                        30.00
+                        <span class="item-total"></span>
                     </td>
                 </tr>
             </tbody>
@@ -94,12 +94,10 @@
             <div>
                 Total (AUD):
             </div>
-            <div>
-                $30.00
-            </div>
+            <div class="final-total"></div>
         </div>
         <div class="signature bold small">
-            <div>Issued by Name</div>
+            <div class="issuedby"></div>
             <img src="signature.png">
         </div>
     </div>
