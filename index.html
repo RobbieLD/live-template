@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Invoice</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='app.css'>
+</head>
+<body>
+    <div class="layout">
+        <div class="header">
+            <div class="title">Some Company Name</div>
+            <div class="contact">
+                <div class="sub-title">Invoice</div>
+                <div class="small">
+                    <div>+123456789</div>
+                    <div>me@gmail.com</div>
+                    <div>somewebsite.com</div>
+                    <div>ABN: 123456798</div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-header">
+            <div class="sub-header-col">
+                <div class="bold caps">Invoice No.</div>
+                <div class="small">1</div>
+            </div>
+            <div class="sub-header-col">
+                <div class="bold caps">Issue Date</div>
+                <div class="small">01/01/2000</div>
+            </div>
+            <div class="sub-header-col">
+                <div class="bold caps">Due Date</div>
+                <div class="small">01/01/2000</div>
+            </div>
+        </div>
+        <div class="to-from">
+            <div>
+                <div class="bold caps">From</div>
+                <div class="small">name</div>
+                <div class="small">address</div>
+                <div class="small">postcoe</div>
+                <div class="small">state</div>
+                <div class="small">country</div>
+            </div>
+            <div>
+                <div class="bold caps">To</div>
+                <div class="small">name</div>
+                <div class="small">address</div>
+                <div class="small">postcode</div>
+                <div class="small">state</div>
+                <div class="small">country</div>
+            </div>
+            <div>
+                <div class="bold caps">To</div>
+                <div class="pay-total">$30.00</div>
+            </div>
+        </div>
+        <table class="items">
+            <thead>
+                <tr>
+                    <th class="bold caps">
+                        Decription
+                    </th>
+                    <th class="bold caps">
+                        Quantity
+                    </th>
+                    <th class="bold caps">
+                        Unit Price ($)
+                    </th>
+                    <th class="bold caps">
+                        Amount ($)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Work
+                    </td>
+                    <td>
+                        1 Hour
+                    </td>
+                    <td>
+                        30.00
+                    </td>
+                    <td>
+                        30.00
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Work
+                    </td>
+                    <td>
+                        1 Hour
+                    </td>
+                    <td>
+                        30.00
+                    </td>
+                    <td>
+                        30.00
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="grand-total bold">
+            <div>
+                Total (AUD):
+            </div>
+            <div>
+                $30.00
+            </div>
+        </div>
+        <div class="signature bold small">
+            <div>Issued by Name</div>
+            <img src="signature.png">
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
