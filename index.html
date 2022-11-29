@@ -8,47 +8,47 @@
 <body>
     <div class="layout">
         <div class="header">
-            <div class="title">Some Company Name</div>
+            <div class="title companyname"></div>
             <div class="contact">
                 <div class="sub-title">Invoice</div>
                 <div class="small">
-                    <div>+123456789</div>
-                    <div>me@gmail.com</div>
-                    <div>somewebsite.com</div>
-                    <div>ABN: 123456798</div>
+                    <div class="phonenumber"></div>
+                    <div class="email"></div>
+                    <div class="website"></div>
+                    <div class="abn"></div>
                 </div>
             </div>
         </div>
         <div class="sub-header">
             <div class="sub-header-col">
                 <div class="bold caps">Invoice No.</div>
-                <div class="small">1</div>
+                <input type="text" value="1" class="right">
             </div>
             <div class="sub-header-col">
                 <div class="bold caps">Issue Date</div>
-                <div class="small">01/01/2000</div>
+                <input type="date" value="01/01/2000">
             </div>
             <div class="sub-header-col">
                 <div class="bold caps">Due Date</div>
-                <div class="small">01/01/2000</div>
+                <input type="date" value="01/01/2000">
             </div>
         </div>
         <div class="to-from">
             <div>
                 <div class="bold caps">From</div>
-                <div class="small">name</div>
-                <div class="small">address</div>
-                <div class="small">postcoe</div>
-                <div class="small">state</div>
-                <div class="small">country</div>
+                <div class="small fromname"></div>
+                <div class="small fromaddress"></div>
+                <div class="small frompostcode"></div>
+                <div class="small fromstate"></div>
+                <div class="small fromcountry"></div>
             </div>
             <div>
                 <div class="bold caps">To</div>
-                <div class="small">name</div>
-                <div class="small">address</div>
-                <div class="small">postcode</div>
-                <div class="small">state</div>
-                <div class="small">country</div>
+                <div class="small toname"></div>
+                <div class="small toaddress"></div>
+                <div class="small topostcode"></div>
+                <div class="small tostate"></div>
+                <div class="small tocountry"></div>
             </div>
             <div>
                 <div class="bold caps">To</div>
@@ -59,7 +59,7 @@
             <thead>
                 <tr>
                     <th class="bold caps">
-                        Decription
+                        Description
                     </th>
                     <th class="bold caps">
                         Quantity
@@ -75,27 +75,13 @@
             <tbody>
                 <tr>
                     <td>
-                        Work
+                        <input type="text" class="left">
                     </td>
                     <td>
-                        1 Hour
+                        <input type="text" class="right">
                     </td>
                     <td>
-                        30.00
-                    </td>
-                    <td>
-                        30.00
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Work
-                    </td>
-                    <td>
-                        1 Hour
-                    </td>
-                    <td>
-                        30.00
+                        <input type="text" class="right">
                     </td>
                     <td>
                         30.00
@@ -103,6 +89,7 @@
                 </tr>
             </tbody>
         </table>
+        <div class="add-row">Add Row</div>
         <div class="grand-total bold">
             <div>
                 Total (AUD):

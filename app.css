@@ -6,7 +6,7 @@ html, body {
 
 .layout {
     display: grid;
-    grid-template-rows: 10em auto auto auto auto 1fr;
+    grid-template-rows: 10em auto auto auto auto auto 1fr;
     grid-template-columns: 1fr;
 }
 
@@ -16,6 +16,25 @@ html, body {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr auto;
     color: white;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+input {
+    border: none;
+    color: white;
+    background: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
 
 .sub-header {
@@ -82,12 +101,24 @@ html, body {
     width: 10em;
 }
 
+.add-row {
+   text-align: right;
+   font-size: small; 
+   padding-right: 1.5em;
+   padding-top: 0.5em;
+   cursor: pointer;
+}
+
+.add-row:hover {
+    color: blue;
+}
+
 .items {
     margin-top: 1em;
-    border-bottom: 1px solid grey;
-    padding-bottom: 1em;
     margin-left: 1em;
     margin-right: 1em;
+    border-bottom: 1px solid grey;
+    padding-bottom: 1em;
 }
 
 .items th:first-child {
