@@ -10,7 +10,6 @@
     <div class="layout" x-init="details = load()" x-data="{
             issued: new Date().toISOString().split('T')[0],
             due: new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().split('T')[0],
-            grandTotal: 0,
             rows:[{
                 description: '',
                 count: 0,
@@ -32,7 +31,11 @@
             },
 
             get grandTotal() {
-                return this.rows.reduce((a, b) => a + this.total(b), 0)
+                const v = this.rows.reduce((a, b) => a + this.total(b), 0)
+                return v.toLocaleString('en-AU', {
+                    style: 'currency',
+                    currency: 'AUD',
+                })
             }
         }">
         <div class="header">
@@ -103,7 +106,7 @@
             <tbody>
                 <template x-for="row in rows">
                     <tr>
-                        <td>
+                        <td class="description">
                             <input x-model="row.description" type="text" class="left">
                         </td>
                         <td>
