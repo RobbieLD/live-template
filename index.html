@@ -4,18 +4,46 @@
     <meta charset='utf-8'>
     <title>Invoice</title>
     <link rel='stylesheet' type='text/css' media='screen' href='app.css'>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
-    <div class="layout">
+    <div class="layout" x-init="details = load()" x-data="{
+            issued: new Date().toISOString().split('T')[0],
+            due: new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().split('T')[0],
+            grandTotal: 0,
+            rows:[{
+                description: '',
+                count: 0,
+                price: 0,
+            }],
+            
+            total(r) {
+                return r.count * r.price
+            },
+
+            load() {
+                let data = window.localStorage.getItem('data')
+                if (!data) {
+                    data = prompt('Enter Json Data')
+                    window.localStorage.setItem('data', data)
+                }
+
+                return JSON.parse(data)
+            },
+
+            get grandTotal() {
+                return this.rows.reduce((a, b) => a + this.total(b), 0)
+            }
+        }">
         <div class="header">
-            <div class="title companyname"></div>
+            <div class="title" x-text="details.companyname"></div>
             <div class="contact">
                 <div class="sub-title">Invoice</div>
                 <div class="small">
-                    <div class="phonenumber"></div>
-                    <div class="email"></div>
-                    <div class="website"></div>
-                    <div class="abn"></div>
+                    <div x-text="details.phonenumber"></div>
+                    <div x-text="details.email"></div>
+                    <div x-text="details.website"></div>
+                    <div x-text="details.abn"></div>
                 </div>
             </div>
         </div>
@@ -26,33 +54,33 @@
             </div>
             <div class="sub-header-col">
                 <div class="bold caps">Issue Date</div>
-                <input type="date" class="issuedate" value="01/01/2000">
+                <input type="date" x-model="issued">
             </div>
             <div class="sub-header-col">
                 <div class="bold caps">Due Date</div>
-                <input type="date" class="duedate" value="01/01/2000">
+                <input type="date" x-model="due">
             </div>
         </div>
         <div class="to-from">
             <div>
                 <div class="bold caps">From</div>
-                <div class="small fromname"></div>
-                <div class="small fromaddress"></div>
-                <div class="small frompostcode"></div>
-                <div class="small fromstate"></div>
-                <div class="small fromcountry"></div>
+                <div class="small" x-text="details.fromname"></div>
+                <div class="small" x-text="details.fromaddress"></div>
+                <div class="small" x-text="details.frompostcode"></div>
+                <div class="small" x-text="details.fromstate"></div>
+                <div class="small" x-text="details.fromcountry"></div>
             </div>
             <div>
                 <div class="bold caps">To</div>
-                <div class="small toname"></div>
-                <div class="small toaddress"></div>
-                <div class="small topostcode"></div>
-                <div class="small tostate"></div>
-                <div class="small tocountry"></div>
+                <div class="small" x-text="details.toname"></div>
+                <div class="small" x-text="details.toaddress"></div>
+                <div class="small" x-text="details.topostcode"></div>
+                <div class="small" x-text="details.tostate"></div>
+                <div class="small" x-text="details.tocountry"></div>
             </div>
             <div>
                 <div class="bold caps">Amount</div>
-                <div class="pay-total final-total"></div>
+                <div class="pay-total" x-text="grandTotal"></div>
             </div>
         </div>
         <table class="items">
@@ -73,34 +101,35 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="data-row">
-                    <td>
-                        <input type="text" class="left">
-                    </td>
-                    <td>
-                        <input type="text" class="right item-number">
-                    </td>
-                    <td>
-                        <input type="text" class="right item-price">
-                    </td>
-                    <td>
-                        <span class="item-total"></span>
-                    </td>
-                </tr>
+                <template x-for="row in rows">
+                    <tr>
+                        <td>
+                            <input x-model="row.description" type="text" class="left">
+                        </td>
+                        <td>
+                            <input x-model="row.count" type="text" class="right">
+                        </td>
+                        <td>
+                            <input x-model="row.price" type="text" class="right">
+                        </td>
+                        <td>
+                            <span x-text="total(row)"></span>
+                        </td>
+                    </tr>
+                </template>
             </tbody>
         </table>
-        <div class="add-row">Add Row</div>
+        <div class="add-row" @click="rows.push({ description: '', count: 0, price: 0})">Add Row</div>
         <div class="grand-total bold">
             <div>
                 Total (AUD):
             </div>
-            <div class="final-total"></div>
+            <div class="final-total" x-text="grandTotal"></div>
         </div>
         <div class="signature bold small">
-            <div class="issuedby"></div>
-            <img src="signature.png">
+            <div class="issuedby" x-text="details.issuedby"></div>
+            <img x-bind:src="details.signature">
         </div>
     </div>
-    <script src="app.js"></script>
 </body>
 </html>
