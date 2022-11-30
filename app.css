@@ -83,6 +83,11 @@ input[type="date"] {
     width: 50%;
 }
 
+.invoice-number {
+    width:2em;
+    color: white;
+}
+
 .grand-total {
     display: grid;
     grid-template-columns: 1fr 1fr;
